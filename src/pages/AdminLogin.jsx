@@ -459,6 +459,10 @@ export default function AdminLogin() {
   const [status, setStatus] = useState({ loading: false, error: '' })
   const [showPass, setShowPass] = useState(false)
 
+  const trimField = (name, value) => {
+    setCredentials((current) => ({ ...current, [name]: value.trim() }))
+  }
+
   if (getAuthToken()) {
     return <Navigate to="/admin" replace />
   }
@@ -471,11 +475,17 @@ export default function AdminLogin() {
   const handleSubmit = async (event) => {
     event.preventDefault()
     setStatus({ loading: true, error: '' })
+    const trimmedCredentials = {
+      username: credentials.username.trim(),
+      password: credentials.password.trim(),
+    }
+    setCredentials(trimmedCredentials)
+
     try {
       const response = await apiFetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(credentials),
+        body: JSON.stringify(trimmedCredentials),
       })
       setAuthToken(response.token)
       navigate('/admin', { replace: true })
@@ -546,6 +556,7 @@ export default function AdminLogin() {
                     name="username"
                     value={credentials.username}
                     onChange={handleChange}
+                    onBlur={(event) => trimField('username', event.target.value)}
                     placeholder="Enter username"
                     autoComplete="username"
                     required
@@ -567,6 +578,7 @@ export default function AdminLogin() {
                     name="password"
                     value={credentials.password}
                     onChange={handleChange}
+                    onBlur={(event) => trimField('password', event.target.value)}
                     placeholder="Enter password"
                     autoComplete="current-password"
                     required
