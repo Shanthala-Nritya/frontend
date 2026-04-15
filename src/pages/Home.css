@@ -1,0 +1,221 @@
+/* ============================================================
+   CLASSES SECTION (Homepage)  —  exact match to screenshot
+   Replace your existing .classes-section block with this.
+   ============================================================ */
+
+.classes-section {
+  background: var(--crimson-dark);        /* deep dark crimson #6B1020 */
+  padding: 4rem 0 3rem;
+  position: relative;
+}
+
+/* ── header ── */
+.classes-header {
+  text-align: center;
+  margin-bottom: 2.8rem;
+}
+
+.classes-section .section-tag {
+  display: none;                          /* hidden as per screenshot */
+}
+
+.classes-section .section-title {
+  font-family: var(--font-body);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: 0.01em;
+  margin-bottom: 0.6rem;
+}
+
+.classes-header p {
+  color: var(--gold);
+  font-size: 0.9rem;
+  margin: 0 auto;
+  max-width: 680px;
+  line-height: 1.7;
+}
+
+/* ── 3-column card grid ── */
+.classes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4.5rem;
+  max-width: px;
+  margin: 0 auto;
+}
+
+/* ── individual card ── */
+.class-card {
+  background: var(--white);
+  border: 1px solid rgba(201, 151, 58, 0.35);
+  border-radius: 4px;
+  padding: 0.9rem 1.8rem 1.6rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.class-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* ── icon area — large, centred, gold-brown ── */
+.class-icon {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #99610b;                         /* gold-brown matching screenshot */
+  flex-shrink: 0;
+}
+
+.class-icon svg,
+.class-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── card title ── */
+.class-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: var(--crimson);
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+
+/* ── card description ── */
+.class-card p {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+/* ── bottom ornament divider inside card ── */
+.class-card-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1.4rem;
+  color: var(--gold);
+  width: 100%;
+}
+
+.class-card-divider span {
+  flex: 1;
+  max-width: 44px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.7;
+}
+
+.class-card-divider i {
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  display: block;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.class-card-divider i::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* ── "View All Classes" CTA button ── */
+.classes-cta {
+  text-align: center;
+  margin-top: 2.2rem;
+}
+
+.classes-section .btn-primary {
+  background: var(--white);
+  color: var(--crimson);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  padding: 0.7rem 3rem;
+  border-radius: 2px;
+  border: none;
+  max-width: 300px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.classes-section .btn-primary:hover {
+  background: var(--cream-dark);
+  color: var(--crimson-dark);
+  transform: translateY(-2px);
+}
+
+/* ── bottom section ornament (horizontal rule + design image) ── */
+.section-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-top: 2.8rem;
+  width: 100%;
+}
+
+.section-ornament span {
+  flex: 1;
+  height: 1px;
+  background: rgba(201, 151, 58, 0.55);
+  max-width: 460px;
+}
+
+.section-ornament img {
+  width: auto;
+  height: 72px;
+  flex-shrink: 0;
+  object-fit: contain;
+  opacity: 0.90;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .classes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 560px) {
+  .classes-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
+
+  .class-card {
+    min-height: 260px;
+  }
+}
+
+.class-vector {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
