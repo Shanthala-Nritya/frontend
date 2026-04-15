@@ -2137,9 +2137,8 @@ ul { list-style: none; }
   }
   .footer-bottom-links { gap: 1rem; flex-wrap: wrap; }
 
-  /* ── Section ornament ── */
-  .section-ornament img { height: 72px; }
-  .section-ornament span { max-width: 80px; }
+
+  .section-ornament span { max-width: 150px; }
 
   /* ── Mandala decorations ── */
   .mandala-contact-left  { width: 180px; left: -12%; opacity: 0.1; }
