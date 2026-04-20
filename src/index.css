@@ -2301,7 +2301,6 @@ ul { list-style: none; }
 
 .admin-shell {
   min-height: 100vh;
-  padding: 3rem 1.5rem;
   background:
     radial-gradient(circle at top left, rgba(201, 151, 58, 0.12), transparent 36%),
     linear-gradient(180deg, #fffaf4 0%, #f8ebdd 100%);
