@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { apiFetch } from '../lib/api'
 import { siteAssets } from '../siteAssets'
+import '../css/pages/Contact.css'
 
 export default function Contact() {
   useScrollReveal()
@@ -121,6 +122,31 @@ export default function Contact() {
                 <p className={item.valueClassName}>{item.value}</p>
               </div>
             ))}
+          </div>
+
+          <div className="contact-map-card reveal">
+            <div className="contact-map-copy">
+              <span className="section-tag">Find Us</span>
+              <h3>Visit Shanthala Nritya Angala</h3>
+              <p>25, 8th Main Rd, 10th Cross, 2nd Block, Jayanagar, Bengaluru 560011</p>
+              <a
+                className="contact-map-link"
+                href="https://www.google.com/maps/search/?api=1&query=25%2C%208th%20Main%20Rd%2C%2010th%20Cross%2C%202nd%20Block%2C%20Jayanagar%2C%20Bengaluru%20560011"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open in Google Maps
+              </a>
+            </div>
+            <div className="contact-map-frame">
+              <iframe
+                title="Shanthala Nritya Angala location map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9590.076787107899!2d77.58397805607662!3d12.93913397734989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15b0eeb9a029%3A0xa71e13c5e42b7f84!2sShanthala%20Nritya%20Angala!5e1!3m2!1sen!2sin!4v1776758734189!5m2!1sen!2sin"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
           </div>
         </div>
       </section>

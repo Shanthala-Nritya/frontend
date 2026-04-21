@@ -1,5 +1,6 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { siteAssets } from '../siteAssets'
+import '../css/pages/Guru.css'
 
 const guruJourneyHighlights = [
   'Bianca Radhakrishna is a Vidushi, lifelong learner, and Bharatanatyam artiste who continues her training under the guidance of renowned Guru Smt. Radha Sridhar of Bangalore.',

@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { siteAssets } from '../siteAssets'
 import { apiFetch } from '../lib/api'
-import './Home.css'
+import '../css/pages/Home.css'
+import '../css/pages/Contact.css'
 
 function ClassIcon({ type }) {
   if (type === 'regular') {

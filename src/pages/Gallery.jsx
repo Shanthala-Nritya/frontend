@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { apiFetch } from '../lib/api'
 import { siteAssets } from '../siteAssets'
+import '../css/pages/Gallery.css'
 
 export default function Gallery() {
   useScrollReveal()

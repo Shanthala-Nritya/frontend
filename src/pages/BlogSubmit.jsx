@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { apiFetch } from '../lib/api'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { siteAssets } from '../siteAssets'
-import './Blog.css'
+import '../css/pages/Blog.css'
 
 const initialForm = {
   title: '',

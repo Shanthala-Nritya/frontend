@@ -1,5 +1,6 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { siteAssets } from '../siteAssets'
+import '../css/pages/About.css'
 
 const testimonials = [
   { initials: 'AV', name: 'Ashwini Valageri', age: 32, stars: 5, text: "Bianca is a deeply dedicated and passionate classical dancer. As someone in my mid 30s looking to reignite my love for dance, I enrolled in her classes and I've enjoyed every single session. She teaches with remarkable patience, respects each student's individual pace and makes learning fun and effortless." },

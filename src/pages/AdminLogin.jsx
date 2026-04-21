@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { apiFetch, getAuthToken, setAuthToken } from '../lib/api'
+import '../css/pages/Admin.css'
 
 export default function AdminLogin() {
   const navigate = useNavigate()

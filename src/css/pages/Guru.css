@@ -1,0 +1,178 @@
+/* ===== GURU PAGE ===== */
+.guru-page { padding: 5rem 0; background: var(--cream); }
+.guru-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 5rem;
+  align-items: start;
+  margin-bottom: 5rem;
+}
+.guru-hero-grid img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  object-position: top;
+}
+.guru-detail-text h2 { font-family: var(--font-display); font-size: 2.5rem; color: var(--crimson); margin-bottom: 1.5rem; line-height: 1.2; }
+.guru-detail-text p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 1rem; }
+.guru-story-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+:where(.guru-story-card, .guru-appearance-card) {
+  background: var(--cream-dark);
+  border: 1px solid rgba(201, 151, 58, 0.22);
+  padding: 2rem;
+}
+.guru-story-card h3 {
+  font-family: var(--font-display);
+  color: var(--crimson);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.guru-story-card p {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.9;
+  margin-bottom: 0.9rem;
+}
+.guru-story-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.guru-story-list li {
+  position: relative;
+  padding-left: 1.15rem;
+  margin-bottom: 0.95rem;
+  color: var(--text-mid);
+  font-size: 0.88rem;
+  line-height: 1.9;
+}
+.guru-story-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.guru-appearances {
+  margin-bottom: 4rem;
+}
+.guru-appearances-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.guru-appearances-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.guru-appearance-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+.guru-appearance-number {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--gold);
+  line-height: 1;
+}
+.guru-appearance-card p {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.9;
+}
+.guru-achievements {
+  border-top: 1px solid var(--gold-pale);
+  padding-top: 4rem;
+}
+.guru-achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.guru-achievement-card {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background: var(--cream-dark);
+}
+.guru-achievement-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(201,151,58,0.18);
+  color: var(--crimson);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.guru-achievement-card h3 {
+  font-family: var(--font-display);
+  color: var(--crimson);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+.guru-achievement-card p {
+  font-size: 0.84rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+}
+
+/* ===== PAGE RESPONSIVE OVERRIDES ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+.guru-hero-grid {
+gap: 3rem;
+}
+
+.guru-achievements-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media (max-width: 768px) {
+.guru-page {
+padding: 3rem 0;
+}
+
+.guru-hero-grid {
+grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.guru-hero-grid img {
+height: 320px;
+}
+
+.guru-detail-text h2 {
+font-size: 1.8rem;
+}
+
+.guru-story-grid,
+  .guru-appearances-grid {
+grid-template-columns: 1fr;
+}
+
+.guru-achievements-grid {
+grid-template-columns: 1fr; gap: 1.2rem;
+}
+}
+
+@media (max-width: 1024px) {
+.guru-achievements-grid {
+grid-template-columns: 1fr;
+}
+}

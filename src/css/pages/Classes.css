@@ -1,0 +1,310 @@
+.classes-page {
+  padding: 6rem 0 5rem;
+  background: #ffffff;       
+}
+
+.classes-page .container {
+  max-width: 1300px;
+}
+
+/* ── page heading ── */
+.cp-header {
+  text-align: center;
+  margin-bottom: 2.4rem;
+}
+
+.cp-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-weight: 400;
+  color: var(--crimson);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.18;
+  margin: 0 auto 0.6rem;
+}
+
+/* ── 2-column card grid ── */
+.cp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ── individual card ── */
+.cp-card {
+  display: grid;
+  grid-template-columns: 2fr 2.2fr;   /* photo ~45 %, content ~55 % */
+  min-height: 370px;
+  background: transparent;
+  border: 1px solid rgba(201, 151, 58, 0.18);
+  overflow: hidden;
+}
+
+/* photo column */
+.cp-card-img-wrap {
+  overflow: hidden;
+}
+
+.cp-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.55s ease;
+}
+
+.cp-card:hover .cp-card-img {
+  transform: scale(1.04);
+}
+
+/* content column — shared by card and arangetram */
+.cp-card-body {
+  background: #fcf4eb;
+  padding: 1.4rem 1.3rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* description paragraph */
+.cp-card-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-mid);
+  line-height: 1.65;
+  margin-bottom: 0.9rem;
+}
+
+/* "Eligibility" / "Training Includes" label */
+.cp-eligibility-label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--crimson);
+  border-bottom: 1.5px solid rgba(201, 151, 58, 0.75);
+  padding-bottom: 0.12rem;
+  margin-bottom: 0.45rem;
+  letter-spacing: 0.01em;
+}
+
+/* bullet list */
+.cp-eligibility-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.9rem;
+  width: 100%;
+}
+
+.cp-eligibility-list li {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--text-dark);
+  line-height: 1.55;
+  padding: 0.08rem 0 0.08rem 1rem;
+  position: relative;
+  font-weight: 600;
+}
+
+.cp-eligibility-list li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  color: var(--crimson);
+  font-size: 0.38rem;
+  top: 0.42rem;
+}
+
+/* card title — large, at the bottom */
+.cp-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 500;
+  color: var(--crimson);
+  line-height: 1.15;
+  margin-top: auto;           /* push to bottom of flex column */
+  margin-bottom: 0.75rem;
+}
+
+/* enquire button */
+.cp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--crimson);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  padding: 0.52rem 1.5rem;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.cp-btn:hover {
+  background: var(--crimson-light);
+  transform: translateY(-2px);
+}
+
+/* ── Arangetram — full-width card ── */
+.cp-arangetram {
+  display: grid;
+  grid-template-columns: 2fr 3.2fr;  /* photo narrower than content */
+  min-height: 380px;
+  background: transparent;
+  border: 1px solid rgba(201, 151, 58, 0.18);
+  overflow: hidden;
+}
+
+.cp-arangetram-img-wrap {
+  overflow: hidden;
+  background: #050505;              /* dark bg as in screenshot */
+}
+
+.cp-arangetram-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.55s ease;
+}
+
+.cp-arangetram:hover .cp-arangetram-img {
+  transform: scale(1.03);
+}
+
+/* two-column training list inside arangetram */
+.cp-training-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+  width: 100%;
+  margin-bottom: 0.9rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .cp-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cp-card {
+    grid-template-columns: 1fr 1.3fr;
+    min-height: 280px;
+  }
+
+  .cp-arangetram {
+    grid-template-columns: 1fr 1.5fr;
+  }
+
+  .cp-training-cols {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .cp-card,
+  .cp-arangetram {
+    grid-template-columns: 1fr;
+  }
+
+  .cp-card-img,
+  .cp-arangetram-img {
+    height: 260px;
+  }
+
+  .cp-card-body {
+    padding: 1.2rem 1rem;
+  }
+
+  .cp-card-title {
+    font-size: 1.6rem;
+  }
+
+}
+
+/* ===== PAGE RESPONSIVE OVERRIDES ===== */
+@media (max-width: 400px) {
+.cp-card {
+grid-template-columns: 1fr;
+}
+
+.cp-card-img {
+height: 200px;
+}
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+.cp-grid {
+grid-template-columns: 1fr;
+}
+
+.cp-card {
+grid-template-columns: 1fr 1.5fr; min-height: 300px;
+}
+
+.cp-arangetram {
+grid-template-columns: 1fr 1.8fr;
+}
+}
+
+@media (max-width: 768px) {
+.classes-page {
+padding: 3.5rem 0 3rem;
+}
+
+.cp-grid {
+grid-template-columns: 1fr;
+    gap: 1.2rem;
+}
+
+.cp-card {
+grid-template-columns: 1fr;
+    min-height: unset;
+}
+
+.cp-card-img {
+height: 240px; object-position: top;
+}
+
+.cp-arangetram {
+grid-template-columns: 1fr;
+}
+
+.cp-arangetram-img {
+height: 240px;
+}
+
+.cp-training-cols {
+grid-template-columns: 1fr; gap: 0.6rem;
+}
+
+.cp-card-body {
+padding: 1.1rem 1rem;
+}
+
+.cp-card-title {
+font-size: 1.5rem;
+}
+
+.cp-header {
+padding-inline: 1rem;
+}
+
+.cp-heading {
+/* width: min(100%, 8ch); */
+    /* max-width: none; */
+    font-size: clamp(1.7rem, 7.2vw, 2.2rem);
+    line-height: 1.14;
+    letter-spacing: 0.01em;
+    padding-top: 3rem;
+}
+}

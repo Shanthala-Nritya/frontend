@@ -1,5 +1,6 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { siteAssets } from '../siteAssets'
+import '../css/pages/Classes.css'
 
 const classes = [
   {

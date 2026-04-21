@@ -2,6 +2,7 @@
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { apiFetch, clearAuthToken, getAuthHeaders, getAuthToken } from '../lib/api'
 import { siteAssets } from '../siteAssets'
+import '../css/pages/Admin.css'
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500&display=swap');
