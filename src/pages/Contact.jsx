@@ -131,7 +131,7 @@ export default function Contact() {
               <p>25, 8th Main Rd, 10th Cross, 2nd Block, Jayanagar, Bengaluru 560011</p>
               <a
                 className="contact-map-link"
-                href="https://www.google.com/maps/search/?api=1&query=25%2C%208th%20Main%20Rd%2C%2010th%20Cross%2C%202nd%20Block%2C%20Jayanagar%2C%20Bengaluru%20560011"
+                href="https://maps.app.goo.gl/9ucg5khGcZDTVe1XA"
                 target="_blank"
                 rel="noreferrer"
               >
