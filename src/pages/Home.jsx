@@ -165,7 +165,7 @@ export default function Home() {
         <img className="hero-ornament hero-ornament-right" src={siteAssets.heroRight} alt="" aria-hidden="true" />
         <div className="hero-content">
           <div className="hero-line"></div>
-          <h1 className="hero-title">WELCOME TO OUR<br />DANCE SCHOOL</h1>
+          <h1 className="hero-title">WELCOME TO OUR DANCE SCHOOL</h1>
           <p className="hero-subtitle">Embracing the rich heritage of Bharatanatyam</p>
           <p className="hero-desc">Experience the divine art of classical Indian dance, where tradition meets grace, and every movement tells a story</p>
         </div>
