@@ -31,7 +31,7 @@ export default function About() {
 
   return (
     <div className="page-enter">
-      <div className="page-hero page-hero-photo" style={{ '--page-hero-image': `url(${siteAssets.stageRed})` }}>
+      <div className="page-hero page-hero-photo" style={{ '--page-hero-image': `url(${siteAssets.group})` }}>
         <div>
           <h1>About Us</h1>
           <p>A sanctuary where tradition meets grace, and every dancer embarks on a journey of artistic excellence and spiritual growth through the timeless art of Bharatanatyam.</p>

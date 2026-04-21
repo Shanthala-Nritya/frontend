@@ -35,8 +35,10 @@ import date from './assets/date-time.png'
 import backgroundDesign from './assets/background_design.png'
 import img from './assets/INE_083.jpg.jpeg'
 import unique from './assets/7.png'
+import group from './assets/group.jpeg'
 
 export const siteAssets = {
+  group,
   unique,
   img,
   backgroundDesign,

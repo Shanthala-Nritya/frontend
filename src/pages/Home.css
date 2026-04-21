@@ -173,7 +173,7 @@
 }
 
 /* ── bottom section ornament (horizontal rule + design image) ── */
-.section-ornament {
+.classes-section .section-ornament {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -182,14 +182,14 @@
   width: 100%;
 }
 
-.section-ornament span {
+.classes-section .section-ornament span {
   flex: 1;
   height: 1px;
   background: rgba(201, 151, 58, 0.55);
   max-width: 460px;
 }
 
-.section-ornament img {
+.classes-section .section-ornament img {
   width: auto;
   height: 72px;
   flex-shrink: 0;
@@ -276,7 +276,7 @@
     font-size: 0.8rem;
   }
 
-  .section-ornament {
+  .classes-section .section-ornament {
     margin-top: 2rem;
   }
 

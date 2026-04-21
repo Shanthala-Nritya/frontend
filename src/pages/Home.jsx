@@ -72,6 +72,7 @@ function UniqueIcon({ type }) {
 
 export default function Home() {
   useScrollReveal()
+  const [heroFigureLoaded, setHeroFigureLoaded] = useState(false)
   const [galleryPreview, setGalleryPreview] = useState([])
   const [selectedPhoto, setSelectedPhoto] = useState(null)
   const [formData, setFormData] = useState({
@@ -148,7 +149,16 @@ export default function Home() {
   return (
     <>
       <div className="page-enter">
-        <section className="hero" style={{ '--hero-image': `url(${siteAssets.heroFigure})` }}>
+        <section className={`hero${heroFigureLoaded ? ' hero--figure-loaded' : ''}`}>
+        <img
+          className="hero-figure"
+          src={siteAssets.heroFigure}
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          decoding="async"
+          onLoad={() => setHeroFigureLoaded(true)}
+        />
         <img className="hero-ornament hero-ornament-top" src={siteAssets.heroTop} alt="" aria-hidden="true" />
         <img className="hero-ornament hero-ornament-left" src={siteAssets.heroLeft} alt="" aria-hidden="true" />
         <img className="hero-ornament hero-ornament-right" src={siteAssets.heroRight} alt="" aria-hidden="true" />

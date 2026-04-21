@@ -59,18 +59,18 @@ export default function Blog() {
           <header className="blog-catalog-header reveal">
             {/* <span className="blog-catalog-label">Community Blog</span> */}
             <h1 className="blog-catalog-title">
-              Discover inspiring <span>Stories</span> from Shanthala Nritya Angala
+              Discover inspiring <span>Stories</span>
             </h1>
             <p className="blog-catalog-subtitle">
               Read reflections, milestones, student experiences, and dance memories shared by our community.
             </p>
           </header>
 
-          <div className="section-ornament blog-section-ornament reveal" aria-hidden="true">
+          {/* <div className="section-ornament blog-section-ornament reveal" aria-hidden="true">
             <span></span>
             <img src={siteAssets.design} alt="" />
             <span></span>
-          </div>
+          </div> */}
 
           {loading && <p className="blog-status">Loading blogs...</p>}
           {error && <p className="blog-status blog-status--error">{error}</p>}
@@ -129,7 +129,11 @@ export default function Blog() {
               )}
             </>
           )}
-
+          <div className="section-ornament blog-section-ornament reveal" aria-hidden="true">
+            <span></span>
+            <img src={siteAssets.design} alt="" />
+            <span></span>
+          </div>
           {/* Bottom CTA */}
           <section className="blog-cta-box reveal">
             {/* <div className="blog-cta-contact">
@@ -153,11 +157,7 @@ export default function Blog() {
             </div>
           </section>
 
-          <div className="section-ornament blog-section-ornament reveal" aria-hidden="true">
-            <span></span>
-            <img src={siteAssets.design} alt="" />
-            <span></span>
-          </div>
+          
 
         </div>
       </section>
