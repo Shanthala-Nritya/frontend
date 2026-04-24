@@ -699,6 +699,7 @@ const styles = `
     color: var(--crimson);
   }
   .ad-field input[type="text"],
+  .ad-field input[type="password"],
   .ad-field input[type="file"],
   .ad-field select {
     width: 100%;
@@ -732,6 +733,41 @@ const styles = `
   }
   .ad-form-msg--error { border-color: var(--crimson); background: var(--gold-pale); color: var(--crimson); }
   .ad-form-msg--success { border-color: var(--gold); background: var(--cream); color: var(--text-dark); }
+  .ad-security-card {
+    max-width: 760px;
+    padding: 2rem 2.2rem;
+    border: 1px solid var(--gold);
+    background: var(--white);
+  }
+  .ad-security-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.1rem;
+  }
+  .ad-security-grid .ad-field:last-child {
+    grid-column: 1 / -1;
+  }
+  .ad-security-note {
+    margin-top: 1rem;
+    color: var(--text-light);
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+  .ad-security-submit {
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    border: none;
+    background: var(--crimson-dark);
+    color: var(--white);
+    font-family: 'Cinzel', serif;
+    font-size: 0.56rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .ad-security-submit:hover:not(:disabled) { background: var(--crimson); }
+  .ad-security-submit:disabled { opacity: 0.55; cursor: not-allowed; }
   .ad-upload-btn {
     width: 100%;
     padding: 0.8rem;
@@ -781,6 +817,8 @@ const styles = `
     .ad-photo-grid { grid-template-columns: repeat(2,1fr); }
     .ad-photo-card:nth-child(3n) { border-right: 1px solid var(--gold); }
     .ad-photo-card:nth-child(2n) { border-right: none; }
+    .ad-security-grid { grid-template-columns: 1fr; }
+    .ad-security-grid .ad-field:last-child { grid-column: auto; }
   }
   @media (max-width: 600px) {
     .ad-table-head { display: none; }
@@ -861,6 +899,8 @@ export default function AdminDashboard() {
   const [error, setError] = useState('')
   const [photoForm, setPhotoForm] = useState(defaultPhotoForm)
   const [photoStatus, setPhotoStatus] = useState({ loading: false, error: '', success: '' })
+  const [passwordForm, setPasswordForm] = useState({ currentPassword: '', newPassword: '', confirmPassword: '' })
+  const [passwordStatus, setPasswordStatus] = useState({ loading: false, error: '', success: '' })
 
   const unreadCount = useMemo(() => queries.filter(q => q.status === 'new').length, [queries])
   const readCount = useMemo(() => queries.filter(q => q.status === 'read').length, [queries])
@@ -1007,9 +1047,52 @@ export default function AdminDashboard() {
     }
   }
 
+  const handlePasswordChange = ({ target }) => {
+    const { name, value } = target
+    setPasswordForm(cur => ({ ...cur, [name]: value }))
+  }
+
+  const handlePasswordSubmit = async (e) => {
+    e.preventDefault()
+    setPasswordStatus({ loading: true, error: '', success: '' })
+
+    if (!passwordForm.currentPassword || !passwordForm.newPassword || !passwordForm.confirmPassword) {
+      setPasswordStatus({ loading: false, error: 'Please fill in all password fields.', success: '' })
+      return
+    }
+
+    if (passwordForm.newPassword !== passwordForm.confirmPassword) {
+      setPasswordStatus({ loading: false, error: 'New password and confirmation do not match.', success: '' })
+      return
+    }
+
+    try {
+      const response = await apiFetch('/api/auth/change-password', {
+        method: 'PATCH',
+        headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(passwordForm),
+      })
+
+      setPasswordForm({ currentPassword: '', newPassword: '', confirmPassword: '' })
+      setPasswordStatus({ loading: false, error: '', success: response.message || 'Password updated successfully.' })
+      clearAuthToken()
+      setTimeout(() => navigate('/admin/login', { replace: true }), 1200)
+    } catch (err) {
+      const isUnauthorized = err.status === 401 || (err.message || '').toLowerCase().includes('session')
+      if (isUnauthorized) {
+        clearAuthToken()
+        navigate('/admin/login', { replace: true })
+        return
+      }
+
+      setPasswordStatus({ loading: false, error: err.message || 'Unable to update password.', success: '' })
+    }
+  }
+
   const switchPage = (page) => {
     if (page === activePage && !selectedQuery) return
     setSelectedQuery(null)
+    setPasswordStatus({ loading: false, error: '', success: '' })
     setActivePage(page)
     setPageKey(k => k + 1)
   }
@@ -1061,6 +1144,17 @@ export default function AdminDashboard() {
                 <path d="M6 4.5A2.5 2.5 0 0 0 3.5 7v10.5h14" />
               </svg>
               Blogs
+            </button>
+            <button
+              className={`ad-nav-btn ${activePage === 'security' ? 'active' : ''}`}
+              type="button"
+              onClick={() => switchPage('security')}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4Z" />
+                <path d="M9.5 12.5 11 14l3.5-4" />
+              </svg>
+              Security
             </button>
           </nav>
 
@@ -1306,6 +1400,68 @@ export default function AdminDashboard() {
                     ))}
                   </div>
                 )}
+              </>
+            ) : null}
+
+            {!loading && activePage === 'security' ? (
+              <>
+                <div className="ad-page-header">
+                  <div>
+                    <h2>Security</h2>
+                    <p>Update your admin password and require a fresh sign-in.</p>
+                  </div>
+                </div>
+
+                <form className="ad-security-card" onSubmit={handlePasswordSubmit}>
+                  <div className="ad-security-grid">
+                    <div className="ad-field">
+                      <label>Current Password</label>
+                      <input
+                        type="password"
+                        name="currentPassword"
+                        value={passwordForm.currentPassword}
+                        onChange={handlePasswordChange}
+                        autoComplete="current-password"
+                        required
+                      />
+                    </div>
+                    <div className="ad-field">
+                      <label>New Password</label>
+                      <input
+                        type="password"
+                        name="newPassword"
+                        value={passwordForm.newPassword}
+                        onChange={handlePasswordChange}
+                        autoComplete="new-password"
+                        minLength={10}
+                        required
+                      />
+                    </div>
+                    <div className="ad-field">
+                      <label>Confirm New Password</label>
+                      <input
+                        type="password"
+                        name="confirmPassword"
+                        value={passwordForm.confirmPassword}
+                        onChange={handlePasswordChange}
+                        autoComplete="new-password"
+                        minLength={10}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <p className="ad-security-note">
+                    Changing the password will sign this admin account out and invalidate older tokens.
+                  </p>
+
+                  {passwordStatus.error ? <p className="ad-form-msg ad-form-msg--error">{passwordStatus.error}</p> : null}
+                  {passwordStatus.success ? <p className="ad-form-msg ad-form-msg--success">{passwordStatus.success}</p> : null}
+
+                  <button className="ad-security-submit" type="submit" disabled={passwordStatus.loading}>
+                    {passwordStatus.loading ? 'Updating…' : 'Change Password'}
+                  </button>
+                </form>
               </>
             ) : null}
           </div>
