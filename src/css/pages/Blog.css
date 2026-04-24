@@ -1627,14 +1627,20 @@
 }
 
 .blog-section-ornament span {
-  max-width: 240px;
-  background: rgba(201, 151, 58, 0.52);
+    flex: 1;
+  height: 2px;
+  background: rgba(201, 151, 58, 0.55);
+  max-width: 400px;
 }
 
 .blog-section-ornament img {
-  height: 84px;
-  opacity: 0.92;
-  padding-top: 28px;
+  width: auto;
+  height: 90px;
+  flex-shrink: 0;
+  object-fit: contain;
+  opacity: 0.90;
+  display: block;
+  margin-inline: -8px;
 }
 
 /* CTA box */

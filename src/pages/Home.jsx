@@ -262,7 +262,7 @@ export default function Home() {
           <div className="classes-cta reveal">
             <Link to="/classes" className="btn-primary">View All Classes</Link>
           </div>
-          <div className="section-ornament reveal" aria-hidden="true">
+          <div className="section-ornament  reveal" aria-hidden="true">
             <span></span>
             <img src={siteAssets.design} alt="" />
             <span></span>
